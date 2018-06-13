@@ -89,6 +89,7 @@ return [
     'permissions' => [
         'permissions' => ['view', 'create', 'update', 'delete'],
         'roles' => ['view', 'create', 'update', 'delete'],
-        'settings'
+        'settings',
+        'employees' => ['view', 'create', 'update', 'delete'],
     ]
 ];

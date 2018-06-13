@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
+    'title' => 'Payroll',
 
     'title_prefix' => '',
 
@@ -121,12 +121,14 @@ return [
             'url'         => 'hr/',
             'icon'        => 'globe',
             'label'       => '',
-            'label_color' => 'success',
+            'icon_color' => 'primary',
         ],
         [
             'text'        => 'Employees',
             'url'         => 'hr/employees/',
             'icon'        => 'users',
+            'icon_color'  => 'green',
+            'can'         => 'view employees',
         ],
         [
             'text'        => 'Departments',

@@ -21,4 +21,9 @@ Route::middleware('auth')->group(function() {
     Route::get('/home', 'HomeController@index')->name('home');
     
     Route::resource('admin/permissions', 'PermissionsController');
+
+    Route::prefix('hr')->group(function () {
+        // Route::get('', '');
+        Route::resource('employees', 'HumanResource\EmployeesController');
+    });
 });

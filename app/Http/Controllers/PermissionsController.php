@@ -21,8 +21,8 @@ class PermissionsController extends Controller
     public function index()
     {
         //
-        $this->middleware('permission:edit-pages');
-        
+        \App\User::canDo('view permissions', true);
+
         $permissions = \Permission::all();
         return view('permissions.index', compact('permissions'));
     }
@@ -35,6 +35,8 @@ class PermissionsController extends Controller
     public function create()
     {
         //
+        \App\User::canDo('create permissions', true);
+
         return view('permissions.create');
     }
 
@@ -47,6 +49,8 @@ class PermissionsController extends Controller
     public function store(Request $request)
     {
         //
+        \App\User::canDo('create permissions', true);
+
         $this->validate($request, [
             'name' => 'required|unique:permissions'
         ]);
@@ -69,6 +73,8 @@ class PermissionsController extends Controller
     public function show($permissions)
     {
         //
+        \App\User::canDo('view permissions', true);
+
     }
 
     /**
@@ -80,6 +86,8 @@ class PermissionsController extends Controller
     public function edit($permissions)
     {
         //
+        \App\User::canDo('update permissions', true);
+
     }
 
     /**
@@ -92,6 +100,8 @@ class PermissionsController extends Controller
     public function update(Request $request, $permissions)
     {
         //
+        \App\User::canDo('update permissions', true);
+
     }
 
     /**
@@ -103,5 +113,7 @@ class PermissionsController extends Controller
     public function destroy($permissions)
     {
         //
+        \App\User::canDo('delete permissions', true);
+
     }
 }
