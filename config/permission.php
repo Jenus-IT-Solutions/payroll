@@ -91,5 +91,7 @@ return [
         'roles' => ['view', 'create', 'update', 'delete'],
         'settings',
         'employees' => ['view', 'create', 'update', 'delete'],
+        'designations' => ['view', 'create', 'update', 'delete'],
+        'departments' => ['view', 'create', 'update', 'delete'],
     ]
 ];

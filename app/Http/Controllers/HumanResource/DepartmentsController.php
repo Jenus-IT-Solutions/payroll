@@ -6,7 +6,7 @@ use App\Models\HumanResource as HR;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class EmployeesController extends Controller
+class DepartmentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +16,11 @@ class EmployeesController extends Controller
     public function index()
     {
         //
-        \App\User::canDo('view employees', true);
+        \App\User::canDo('view departments');
 
-        $employees = HR\Employees::all();
+        $departments = HR\Departments::all();
 
-        return view('human-resource.employees.index', compact('employees'));
+        return view('human-resource.departments.index', compact('departments'));
     }
 
     /**
@@ -31,6 +31,9 @@ class EmployeesController extends Controller
     public function create()
     {
         //
+        \App\User::canDo('view departments');
+
+        return view('human-resource.departments.create');
     }
 
     /**
@@ -42,15 +45,27 @@ class EmployeesController extends Controller
     public function store(Request $request)
     {
         //
+        \App\User::canDo('view departments');
+
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+
+        $department = new HR\Departments;
+        $department->title = request('title');
+        $department->description = request('description');
+        $department->save();
+
+        return redirect()->route('departments.index')->with('message', 'Department was added.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\HumanResource\Employees  $employees
+     * @param  \App\Models\HumanResource\Departments  $departments
      * @return \Illuminate\Http\Response
      */
-    public function show(Employees $employees)
+    public function show(Departments $departments)
     {
         //
     }
@@ -58,10 +73,10 @@ class EmployeesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\HumanResource\Employees  $employees
+     * @param  \App\Models\HumanResource\Departments  $departments
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employees $employees)
+    public function edit(Departments $departments)
     {
         //
     }
@@ -70,10 +85,10 @@ class EmployeesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\HumanResource\Employees  $employees
+     * @param  \App\Models\HumanResource\Departments  $departments
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employees $employees)
+    public function update(Request $request, Departments $departments)
     {
         //
     }
@@ -81,10 +96,10 @@ class EmployeesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\HumanResource\Employees  $employees
+     * @param  \App\Models\HumanResource\Departments  $departments
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employees $employees)
+    public function destroy(Departments $departments)
     {
         //
     }

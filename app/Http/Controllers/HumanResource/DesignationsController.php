@@ -6,7 +6,7 @@ use App\Models\HumanResource as HR;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class EmployeesController extends Controller
+class DesignationsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +16,9 @@ class EmployeesController extends Controller
     public function index()
     {
         //
-        \App\User::canDo('view employees', true);
+        \App\User::canDo('view designations');
 
-        $employees = HR\Employees::all();
-
-        return view('human-resource.employees.index', compact('employees'));
+        return view('');
     }
 
     /**
@@ -47,10 +45,10 @@ class EmployeesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\HumanResource\Employees  $employees
+     * @param  \App\Models\HumanResource\Designations  $designations
      * @return \Illuminate\Http\Response
      */
-    public function show(Employees $employees)
+    public function show(Designations $designations)
     {
         //
     }
@@ -58,10 +56,10 @@ class EmployeesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\HumanResource\Employees  $employees
+     * @param  \App\Models\HumanResource\Designations  $designations
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employees $employees)
+    public function edit(Designations $designations)
     {
         //
     }
@@ -70,10 +68,10 @@ class EmployeesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\HumanResource\Employees  $employees
+     * @param  \App\Models\HumanResource\Designations  $designations
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employees $employees)
+    public function update(Request $request, Designations $designations)
     {
         //
     }
@@ -81,10 +79,10 @@ class EmployeesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\HumanResource\Employees  $employees
+     * @param  \App\Models\HumanResource\Designations  $designations
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employees $employees)
+    public function destroy(Designations $designations)
     {
         //
     }

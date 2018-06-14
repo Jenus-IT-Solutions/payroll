@@ -115,48 +115,46 @@ return [
             'url'         => '/home',
             'icon'        => 'home',
         ],
-        'HR Management',
         [
-            'text'        => 'Overview',
-            'url'         => 'hr/',
+            'text'        => 'HR Management',
+            'url'         => '#',
             'icon'        => 'globe',
-            'label'       => '',
             'icon_color' => 'primary',
+            'submenu' => [    
+                [
+                    'text'        => 'Employees',
+                    'url'         => 'hr/employees/',
+                    'icon'        => 'users',
+                    'icon_color'  => 'green',
+                    'can'         => 'view employees',
+                ], [
+                    'text'        => 'Departments',
+                    'url'         => 'hr/departments',
+                    'icon'        => 'building',
+                ], [
+                    'text'        => 'Designations',
+                    'url'         => 'hr/designations',
+                    'icon'        => 'briefcase',
+                ],
+            ]
         ],
-        [
-            'text'        => 'Employees',
-            'url'         => 'hr/employees/',
-            'icon'        => 'users',
-            'icon_color'  => 'green',
-            'can'         => 'view employees',
-        ],
-        [
-            'text'        => 'Departments',
-            'url'         => 'hr/departments',
-            'icon'        => 'building',
-        ],
-        [
-            'text'        => 'Designations',
-            'url'         => 'hr/designations',
-            'icon'        => 'briefcase',
-        ],
-        'Payroll',
-        [
-            'text' => 'Calendar',
-            'url' => 'payroll/calendar',
-            'icon' => 'calendar',
-        ],
-        'Account Settings',
-        [
-            'text' => 'Profile',
-            'url'  => 'admin/settings',
-            'icon' => 'user',
-        ],
-        [
-            'text' => 'Change Password',
-            'url'  => 'admin/settings',
-            'icon' => 'lock',
-        ],
+        // 'Payroll',
+        // [
+        //     'text' => 'Calendar',
+        //     'url' => 'payroll/calendar',
+        //     'icon' => 'calendar',
+        // ],
+        // 'Account Settings',
+        // [
+        //     'text' => 'Profile',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'user',
+        // ],
+        // [
+        //     'text' => 'Change Password',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'lock',
+        // ],
 
         /* [
             'text'    => 'Multilevel',

@@ -25,5 +25,6 @@ Route::middleware('auth')->group(function() {
     Route::prefix('hr')->group(function () {
         // Route::get('', '');
         Route::resource('employees', 'HumanResource\EmployeesController');
+        Route::resource('departments', 'HumanResource\DepartmentsController');
     });
 });
