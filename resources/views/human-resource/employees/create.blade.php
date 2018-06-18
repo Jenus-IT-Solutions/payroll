@@ -30,7 +30,13 @@
             <div class="row form-group">
                 <div class="col-md-6">
                     <label for="emp_id">Employee ID</label>
-                    <input type="text" id="emp_id" class="form-control" name="emp_id">
+                    <div class="input-group date" data-provide="datepicker">
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-th"></span>
+                        </div>
+                        <input type="text" name="date_hire" id="date_hire" class="form-control">
+                    </div>
+                    {{-- <input type="text" id="emp_id" class="form-control" name="emp_id"> --}}
                 </div>
 
                 <div class="col-md-6">
@@ -40,13 +46,7 @@
             </div>
             <div class="form-group">
                 <label for="date_hire">Date of Hire</label>
-                {{-- <input type="text" id="date_hire" class="form-control" name="date_hire"> --}}
-                <div class="input-group date" data-provide="datepicker">
-                    <input type="text" name="date_hire" id="date_hire" class="form-control">
-                    <div class="input-group-addon">
-                        <span class="glyphicon glyphicon-th"></span>
-                    </div>
-                </div>
+                <input type="text" id="date_hire" class="form-control" name="date_hire">
             </div>
 
 
@@ -80,13 +80,16 @@
 @stop
 
 @section('css')
-    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+    <link rel="stylesheet" href="/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="/css/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="/css/jquery-ui.theme.min.css">
 @stop
 
 
 
 @section('js')
+    <script src="/js/jquery-ui.min.js"></script>
     <script>
         jQuery('#date_hire').datepicker();
     </script>
-@stop
+@stop   
