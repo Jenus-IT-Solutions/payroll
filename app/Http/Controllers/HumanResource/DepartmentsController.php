@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\HumanResource;
 
-use App\Models\HumanResource as HR;
+use App\Models\HumanResource\Departments;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,7 +18,7 @@ class DepartmentsController extends Controller
         //
         \App\User::canDo('view departments');
 
-        $departments = HR\Departments::all();
+        $departments = Departments::all();
 
         return view('human-resource.departments.index', compact('departments'));
     }
@@ -51,7 +51,7 @@ class DepartmentsController extends Controller
             'title' => 'required'
         ]);
 
-        $department = new HR\Departments;
+        $department = new Departments;
         $department->title = request('title');
         $department->description = request('description');
         $department->save();
@@ -76,9 +76,12 @@ class DepartmentsController extends Controller
      * @param  \App\Models\HumanResource\Departments  $departments
      * @return \Illuminate\Http\Response
      */
-    public function edit(Departments $departments)
+    public function edit(Departments $department)
     {
         //
+        \App\User::canDo('update departments');
+        
+        return view('human-resource.departments.edit', compact('department'));
     }
 
     /**
@@ -88,9 +91,20 @@ class DepartmentsController extends Controller
      * @param  \App\Models\HumanResource\Departments  $departments
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Departments $departments)
+    public function update(Request $request, Departments $department)
     {
         //
+        \App\User::canDo('update departments');
+
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+
+        $department->title = request('title');
+        $department->description = request('description');
+        $department->save();
+
+        return redirect()->route('departments.index')->with('message', 'Department was updated.');
     }
 
     /**

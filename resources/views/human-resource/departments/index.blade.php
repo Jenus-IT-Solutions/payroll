@@ -36,7 +36,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    
+                                    <a href="{{ route('departments.edit', $department->id) }}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -50,21 +50,6 @@
             </div>
         </div>
     </div>
-    @component('components.btn-modal', [ 'modal_id' => 'sa' ])
-        Launch modal
-    @endcomponent
-    @component('components.modal', [ 'modal_id' => 'sa'])
-        @slot('title')
-            Modal title
-        @endslot
-
-        <p>Modal body text goes here.</p>
-
-        @slot('footer')
-            <button type="button" class="btn btn-primary">Save changes</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        @endslot
-    @endcomponent
 @stop
 
 @section('css')

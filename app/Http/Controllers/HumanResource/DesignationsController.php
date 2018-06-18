@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\HumanResource;
 
-use App\Models\HumanResource as HR;
+use App\Models\HumanResource\Designations;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,7 +18,9 @@ class DesignationsController extends Controller
         //
         \App\User::canDo('view designations');
 
-        return view('');
+        $designations = Designations::all();
+
+        return view('human-resource.designations.index', compact('designations'));
     }
 
     /**
@@ -29,6 +31,9 @@ class DesignationsController extends Controller
     public function create()
     {
         //
+        \App\User::canDo('create designations');
+
+        return view('human-resource.designations.create');
     }
 
     /**
@@ -40,6 +45,18 @@ class DesignationsController extends Controller
     public function store(Request $request)
     {
         //
+        \App\User::canDo('create designations');
+
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+
+        $designation = new Designations;
+        $designation->title = request('title');
+        $designation->description = request('description');
+        $designation->save();
+
+        return redirect()->route('designations.index')->with('message', 'Designation was added.');
     }
 
     /**
@@ -59,9 +76,12 @@ class DesignationsController extends Controller
      * @param  \App\Models\HumanResource\Designations  $designations
      * @return \Illuminate\Http\Response
      */
-    public function edit(Designations $designations)
+    public function edit(Designations $designation)
     {
         //
+        \App\User::canDo('update departments');
+        
+        return view('human-resource.designations.edit', compact('designation'));
     }
 
     /**
@@ -71,9 +91,20 @@ class DesignationsController extends Controller
      * @param  \App\Models\HumanResource\Designations  $designations
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Designations $designations)
+    public function update(Request $request, Designations $designation)
     {
         //
+        \App\User::canDo('update departments');
+
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+
+        $designation->title = request('title');
+        $designation->description = request('description');
+        $designation->save();
+
+        return redirect()->route('designations.index')->with('message', 'Designation was updated.');
     }
 
     /**

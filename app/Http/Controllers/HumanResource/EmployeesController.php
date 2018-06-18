@@ -31,6 +31,9 @@ class EmployeesController extends Controller
     public function create()
     {
         //
+        \App\User::canDo('create employees', true);
+
+        return view('human-resource.employees.create');
     }
 
     /**

@@ -26,5 +26,6 @@ Route::middleware('auth')->group(function() {
         // Route::get('', '');
         Route::resource('employees', 'HumanResource\EmployeesController');
         Route::resource('departments', 'HumanResource\DepartmentsController');
+        Route::resource('designations', 'HumanResource\DesignationsController');
     });
 });

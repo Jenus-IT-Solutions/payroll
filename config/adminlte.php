@@ -131,10 +131,14 @@ return [
                     'text'        => 'Departments',
                     'url'         => 'hr/departments',
                     'icon'        => 'building',
+                    'icon_color'  => 'teal',
+                    'can'         => 'view departments',
                 ], [
                     'text'        => 'Designations',
                     'url'         => 'hr/designations',
                     'icon'        => 'briefcase',
+                    'icon_color'  => 'blue',
+                    'can'         => 'view designations',
                 ],
             ]
         ],

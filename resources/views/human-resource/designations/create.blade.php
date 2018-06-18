@@ -3,26 +3,29 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Create a Permission</h1>
+    <h1>Create a Designation</h1>
 @stop
 
 @section('content')
 
-    @include('layouts.error-and-messages')
-    <form method="post" action="{{route('permissions.store')}}">
-        @csrf
-        <div class="row">
-            <div class="form-group col-md-4">
-                <label for="name">Permission Name:</label>
-                <input type="text" class="form-control" name="name">
+<div class="box box-default">    
+    <div class="box-body">
+        @include('layouts.error-and-messages')
+        <form method="post" action="{{ route('designations.store') }}">
+            @csrf
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" class="form-control" name="title">
             </div>
-            <div class="form-group col-md-4" style="margin-top:30px">
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" class="form-control" name="description"></textarea>
+            </div>
+            <div class="form-group" style="margin-top:30px">
                 <button type="submit" class="btn btn-success">Save</button>
-
             </div>
-            <div class="col-md-4"></div>
-        </div>
-    </form>
+        </form>
+    </div>
 @stop
 
 @section('css')

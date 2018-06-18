@@ -1,23 +1,38 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Dashboard')
+
+@section('content_header')
+    <h1>Update Department</h1>
+@stop
 
 @section('content')
-     <div >
-          <h2>Edit an Account</h2><br  />
-          @include('layouts.error-and-messages')
-          <form method="POST" action="{{route('charts.update', $chart->id)}}">
-              @csrf
-              @method('put')
-              <div class="row">
-                  <div class="form-group col-md-4">
-                      <label for="name">Account:</label>
-                      <input type="text" class="form-control" name="account_name" value="{{$chart->account_name}}">
-                  </div>
-                  <div class="form-group col-md-4" style="margin-top:30px">
-                      <button type="submit" class="btn btn-success">Update</button>
-      
-                  </div>
-                  <div class="col-md-4"></div>
-              </div>
-          </form>
-      </div>
-@endsection
+
+<div class="box box-default">    
+    <div class="box-body">
+        @include('layouts.error-and-messages')
+        <form method="post" action="{{ route('departments.update', $department->id) }}">
+            @csrf
+            @method('put')
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" class="form-control" name="title" value="{{ $department->title }}">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" class="form-control" name="description">{{ $department->description }}</textarea>
+            </div>
+            <div class="form-group" style="margin-top:30px">
+                <button type="submit" class="btn btn-success">Save</button>
+            </div>
+        </form>
+    </div>
+@stop
+
+@section('css')
+    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+@stop
+
+
+
+@section('js')
