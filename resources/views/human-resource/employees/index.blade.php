@@ -11,13 +11,11 @@
     <div class="box box-default">
         <div class="col-md-12 margin">
             @can('create employees')
-                <a class="btn btn-success" href="{{ route('employees.create') }}"><i class="fa fa-plus"></i>&nbsp; New Employee</a>
+                <a class="btn btn-sm btn-success" href="{{ route('employees.create') }}"><i class="fa fa-plus"></i>&nbsp; New Employee</a>
             @endcan
         </div>
         <div class="box-body">
             <div class="col-md-12">
-                {{-- <div class="panel panel-success table-responsive"> --}}
-                    {{-- <div class="panel-heading">Employees</div> --}}
                     @include('layouts.error-and-messages')
                     @if(Auth::check())
                         <!-- Table -->
@@ -40,7 +38,6 @@
                         <div class="bg-warning pad">No employees</div>
                         @endif
                     @endif
-                {{-- </div> --}}
             </div>
         </div>
     </div>

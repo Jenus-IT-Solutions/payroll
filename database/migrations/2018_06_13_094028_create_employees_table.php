@@ -22,9 +22,9 @@ class CreateEmployeesTable extends Migration
             $table->integer('designation')->nullable();
             $table->integer('location')->nullable();
             $table->integer('hiring_source')->nullable();
-            $table->date('hiring_date');
-            $table->date('termination_date');
-            $table->date('date_of_birth');
+            $table->date('hiring_date')->nullable();
+            $table->date('termination_date')->nullable();
+            $table->date('date_of_birth')->nullable();
             $table->integer('reporting_to')->nullable();
             $table->float('pay_rate', 8, 2)->nullable();
             $table->string('pay_type')->nullable();

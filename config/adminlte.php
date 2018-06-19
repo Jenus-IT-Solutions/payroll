@@ -123,7 +123,7 @@ return [
             'submenu' => [    
                 [
                     'text'        => 'Employees',
-                    'url'         => 'hr/employees/',
+                    'url'         => 'hr/employees',
                     'icon'        => 'users',
                     'icon_color'  => 'green',
                     'can'         => 'view employees',

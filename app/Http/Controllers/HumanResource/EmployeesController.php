@@ -45,6 +45,23 @@ class EmployeesController extends Controller
     public function store(Request $request)
     {
         //
+        \App\User::canDo('create employees', true);
+        
+        $this->validate($request, [
+            'first_name' => 'required',
+            'middle_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'email|required|unique:users',
+            'emp_id' => 'required|unique:employees',
+            'password' => 'required|confirmed'
+        ]);
+
+        $user = new \App\User;
+        $user->name = request('first_name') . ' ' . request('middle_name') . ' ' . request('last_name');
+        $user->email = request('email');
+        $user->password = \Hash::make(request('password'));
+        
+        return redirect()->route('employees.index')->with('message', 'Employee was added.');
     }
 
     /**

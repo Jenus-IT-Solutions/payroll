@@ -11,7 +11,7 @@
     <div class="box box-default">
         <div class="col-md-12 margin">
             @can('create designations')
-                <a class="btn btn-success btn-sm" href="{{ route('designations.create') }}"><i class="fa fa-plus"></i>&nbsp; New designation</a>
+                <a class="btn btn-success btn-sm" href="{{ route('designations.create') }}"><i class="fa fa-plus"></i>&nbsp; New Designation</a>
             @endcan
         </div>
         
